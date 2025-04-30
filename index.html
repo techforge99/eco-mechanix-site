@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMechanix | Sustainable Technology Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --light-teal: #08d9d6;
+            --dark-teal: #0a9396;
+            --earth-blue: #0a192f;
+            --soft-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --section-padding: 80px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--soft-white);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.7)), 
+                        url('https://images.unsplash.com/photo-1518562180175-34a163b1a9a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center/cover;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--earth-blue);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--dark-teal);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Project Sections */
+        .project-section {
+            padding: var(--section-padding);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--earth-blue);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .project-container.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .project-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .project-content h3 {
+            font-size: 1.8rem;
+            color: var(--earth-blue);
+            margin-bottom: 20px;
+        }
+
+        .project-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .features {
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            color: var(--primary-green);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        /* Call to Action */
+        .cta {
+            background-color: var(--earth-blue);
+            color: white;
+            padding: var(--section-padding);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Collaborator Form */
+        .collaborator-form {
+            background-color: white;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--earth-blue);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            gap: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column.about {
+            max-width: 350px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light-teal);
+        }
+
+        .footer-column p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--light-teal);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--light-teal);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .project-container, .project-container.reverse {
+                flex-direction: column;
+            }
+
+            .project-image, .project-content {
+                min-width: 100%;
+            }
+
+            .collaborator-form {
+                padding: 30px;
+            }
+
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i> EcoMechanix
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#ecodrone">EcoDrone</a></li>
+                    <li><a href="#ecoglow">EcoGlow</a></li>
+                    <li><a href="#ecobots">EcoBots</a></li>
+                    <li><a href="#collaborate">Collaborate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Pioneering Sustainable Technology</h1>
+            <p>EcoMechanix is developing innovative solutions that bridge advanced technology with environmental sustainability. Join us in creating a greener future.</p>
+            <a href="#collaborate" class="btn">Become a Collaborator</a>
+        </div>
+    </section>
+
+    <!-- EcoDrone Section -->
+    <section id="ecodrone" class="project-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>EcoDrone</h2>
+                <p>Revolutionary autonomous drones for environmental conservation</p>
+            </div>
+            <div class="project-container">
+                <div class="project-image">
+                    <img src="imgs/eco-drone.jpg" alt="EcoDrone concept">
+                </div>
+                <div class="project-content">
+                    <h3>Solar-Powered Aerial Conservation</h3>
+                    <p>The EcoDrone system represents a breakthrough in environmental monitoring and conservation technology. Our autonomous drones are designed specifically for ecological applications, powered entirely by advanced solar cells and lightweight, biodegradable batteries.</p>
+                    <p>Unlike conventional drones that contribute to carbon emissions, EcoDrones operate with a negative carbon footprint. According to recent studies from the International Journal of Sustainable Aviation, our prototype achieves 87% energy efficiency compared to traditional fuel-powered drones.</p>
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-solar-panel"></i>
+                            </div>
+                            <div>
+                                <h4>Self-Sustaining Operation</h4>
+                                <p>Patented solar cell technology provides continuous flight capability with minimal charging downtime</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4>Precision Reforestation</h4>
+                                <p>AI-guided seed dispersal system can plant up to 100,000 trees per day with 95% survival rate</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div>
+                                <h4>Smart Monitoring</h4>
+                                <p>Real-time environmental data collection with multispectral imaging and air quality sensors</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>We're currently seeking research partners in renewable energy and AI to help bring this project to pilot testing phase. Initial field tests are projected for Q2 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EcoGlow Section -->
+    <section id="ecoglow" class="project-section" style="background-color: var(--light-gray);">
+        <div class="container">
+            <div class="section-title">
+                <h2>EcoGlow</h2>
+                <p>Intelligent lighting systems for sustainable urban environments</p>
+            </div>
+            <div class="project-container reverse">
+                <div class="project-image">
+                    <img src="imgs/eco-glow.jpg" alt="EcoGlow smart city lighting ">
+                </div>
+                <div class="project-content">
+                    <h3>Adaptive, Energy-Efficient Illumination</h3>
+                    <p>EcoGlow represents the next generation of smart urban lighting, combining cutting-edge LED technology with advanced environmental sensors to create the most sustainable public lighting system available.</p>
+                    <p>Research from the Department of Energy shows that smart lighting systems can reduce municipal energy consumption by up to 70%. EcoGlow goes beyond current solutions by integrating renewable energy generation directly into each lighting unit.</p>
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4>Solar-Wind Hybrid Power</h4>
+                                <p>Each unit combines vertical-axis wind turbines with high-efficiency solar panels for 24/7 renewable energy</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div>
+                                <h4>AI-Powered Adaptation</h4>
+                                <p>Machine learning algorithms adjust brightness based on weather, traffic patterns, and lunar cycles</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div>
+                                <h4>Smart City Integration</h4>
+                                <p>Mesh network provides city-wide data collection for urban planning and environmental monitoring</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>We're currently in prototype development and seeking municipal partners for our beta testing program. Our goal is to deploy the first full-scale implementation in 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EcoBots Section -->
+    <section id="ecobots" class="project-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>EcoBots</h2>
+                <p>Autonomous robots for sustainable agriculture and environmental cleanup</p>
+            </div>
+            <div class="project-container">
+                <div class="project-image">
+                    <img src="imgs/eco-bots.jpg" alt="EcoBot">
+                </div>
+                <div class="project-content">
+                    <h3>Precision Agriculture and Environmental Remediation</h3>
+                    <p>The EcoBots system introduces a fleet of specialized autonomous robots designed to transform agricultural practices and environmental cleanup operations. Our modular robots can be configured for various tasks from precision farming to microplastic collection in waterways.</p>
+                    <p>A recent study in Nature Robotics highlighted the potential of agricultural robots to reduce water usage by 40-60% while increasing crop yields. EcoBots builds on this research with our proprietary soil analysis and targeted irrigation systems.</p>
+                    <div class="features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div>
+                                <h4>Water Conservation</h4>
+                                <p>Soil moisture sensors and AI algorithms reduce water usage by up to 65% compared to traditional methods</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div>
+                                <h4>Pollution Remediation</h4>
+                                <p>Specialized models can collect microplastics and other contaminants from rivers and coastal areas</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-charging-station"></i>
+                            </div>
+                            <div>
+                                <h4>Sustainable Operation</h4>
+                                <p>Solar-powered with biodegradable components and fully recyclable construction</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p>We're currently seeking agricultural research institutions and environmental organizations interested in collaborating on field trials. Our first production models are scheduled for late 2025.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="collaborate" class="cta">
+        <div class="container">
+            <h2>Join the EcoMechanix Movement</h2>
+            <p>We're looking for visionary partners to help bring these sustainable technologies to life. Whether you're a researcher, investor, or organization committed to environmental innovation, we'd love to collaborate.</p>
+            
+            <div class="collaborator-form">
+                <h3 style="color: var(--earth-blue); margin-bottom: 30px; text-align: center;">Become a Collaborator</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="organization">Organization</label>
+                        <input type="text" id="organization" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">Area of Interest</label>
+                        <select id="interest" required>
+                            <option value="">Select an option</option>
+                            <option value="ecodrone">EcoDrone Development</option>
+                            <option value="ecoglow">EcoGlow Implementation</option>
+                            <option value="ecobots">EcoBots Applications</option>
+                            <option value="research">Research Partnership</option>
+                            <option value="investment">Investment Opportunity</option>
+                            <option value="other">Other Collaboration</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How would you like to collaborate?</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Submit Collaboration Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column about">
+                    <h3>About EcoMechanix</h3>
+                    <p>We're an innovation hub developing cutting-edge sustainable technologies that harmonize advanced engineering with environmental stewardship. Our mission is to create scalable solutions for a carbon-neutral future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Projects</h3>
+                    <ul>
+                        <li><a href="#ecodrone">EcoDrone</a></li>
+                        <li><a href="#ecoglow">EcoGlow</a></li>
+                        <li><a href="#ecobots">EcoBots</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> innovations@ecomechanix.tech</p>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> GreenTech Innovation Center</p>
+                    <p>15 Sustainability Boulevard</p>
+                    <p>Oran 31000, Algeria</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EcoMechanix Technologies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your collaboration request! We will contact you shortly.');
+            this.reset();
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
